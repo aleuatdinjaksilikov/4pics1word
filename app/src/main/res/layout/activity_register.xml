@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/main_bg"
+    tools:context=".RegisterActivity">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/tool_bar_register"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="#283654"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/btn_settings"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/settings_icon"
+            android:layout_marginStart="5dp"
+            android:padding="4dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="10dp"
+            app:cardCornerRadius="5dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_coins"
+                android:orientation="horizontal">
+
+                <com.airbnb.lottie.LottieAnimationView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_margin="3dp"
+                    app:lottie_loop="true"
+                    android:layout_gravity="center_vertical"
+                    app:lottie_fileName="coin_animation.json"
+                    app:lottie_autoPlay="true"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0"
+                    android:layout_margin="3dp"
+                    android:fontFamily="@font/secular_one"
+                    android:textSize="24sp"
+                    android:textColor="@color/white"
+                    android:shadowColor="@color/black"/>
+
+                <com.airbnb.lottie.LottieAnimationView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    app:lottie_autoPlay="true"
+                    app:lottie_loop="true"
+                    android:layout_margin="3dp"
+                    android:layout_gravity="center_vertical"
+                    app:lottie_fileName="add_anim.json" />
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <TextView
+        android:id="@+id/tv_level_register"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        android:background="@drawable/ic_level"
+        android:fontFamily="@font/heebo_medium"
+        android:gravity="center"
+        android:maxEms="1"
+        android:translationZ="10dp"
+        android:text="5"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        app:layout_constraintTop_toTopOf="@id/ll_register_photos"
+        app:layout_constraintStart_toStartOf="@id/ll_register_photos"
+        app:layout_constraintEnd_toEndOf="@id/ll_register_photos"
+        app:layout_constraintBottom_toBottomOf="@id/ll_register_photos"/>
+
+    <LinearLayout
+        android:id="@+id/ll_register_photos"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintVertical_bias="0.25"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tool_bar_register"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/img1_register"
+                android:layout_width="130dp"
+                android:layout_height="130dp"
+                android:layout_margin="2dp"
+                android:background="@drawable/bg_photos"
+                android:padding="6dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/img" />
+
+            <ImageView
+                android:id="@+id/img2_register"
+                android:layout_width="130dp"
+                android:layout_height="130dp"
+                android:layout_margin="2dp"
+                android:background="@drawable/bg_photos"
+                android:padding="6dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/img" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/img3_register"
+                android:layout_width="130dp"
+                android:layout_height="130dp"
+                android:layout_margin="2dp"
+                android:background="@drawable/bg_photos"
+                android:padding="6dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/img" />
+
+            <ImageView
+                android:id="@+id/img4_register"
+                android:layout_width="130dp"
+                android:layout_height="130dp"
+                android:layout_margin="2dp"
+                android:background="@drawable/bg_photos"
+                android:padding="6dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/img" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_play"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_marginHorizontal="50dp"
+        android:backgroundTint="#1EC125"
+        android:fontFamily="@font/varela_round"
+        android:text="Play"
+        android:textAllCaps="false"
+        android:textStyle="bold"
+        android:textSize="38sp"
+        app:cornerRadius="10dp"
+        app:layout_constraintBottom_toBottomOf="@id/ll_register_photos"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ll_register_photos"/>
+
+    <com.google.android.gms.ads.AdView
+        android:id="@+id/adView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        app:adSize="BANNER"
+        android:layout_marginBottom="20dp"
+        app:adUnitId="ca-app-pub-3940256099942544/6300978111"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+
+    </com.google.android.gms.ads.AdView>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

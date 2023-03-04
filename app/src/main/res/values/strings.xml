@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">4pics1word</string>
+    <string name="text_btn_podzkaska">C</string>
+    <string name="image_4">Image 4</string>
+    <string name="button_back">Button back</string>
+    <string name="big_image">Big Image</string>
+    <string name="image_1">Image 1</string>
+    <string name="image_2">Image 2</string>
+    <string name="image_3">Image 3</string>
+</resources>
