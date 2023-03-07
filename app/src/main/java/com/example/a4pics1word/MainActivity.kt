@@ -1,25 +1,28 @@
 package com.example.a4pics1word
 
 import android.content.Context
+import android.content.SharedPreferences
 import android.os.*
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import android.view.View
 import android.view.animation.AlphaAnimation
-import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import android.widget.TextView
-import android.widget.Toast
 import com.example.a4pics1word.databinding.ActivityMainBinding
-import com.example.a4pics1word.entity.Question
 import com.example.a4pics1word.entity.QuestionList
 import kotlin.random.Random
 
+const val PREFERENCE_NAME = "PREFERENCE_NAME"
+
 class MainActivity : AppCompatActivity() {
 
+    private lateinit var preferences: SharedPreferences
     lateinit var binding: ActivityMainBinding
     private var currentIndeks = 0
     private var imageId = 0
+    private var levelIndex = 0
+    private var coins = 0
     private var optionList= mutableListOf<TextView>()
     private var answerList= mutableListOf<TextView>()
     private var userAnswerList = mutableListOf<Pair<String,TextView>>()
@@ -30,15 +33,14 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        preferences = getSharedPreferences(PREFERENCE_NAME, Context.MODE_PRIVATE)
         pustoy = Pair("",binding.option9)
 
         fillOptionAndAnswerList()
         QuestionList.getQuestion()
         setQuestion()
 
-
-
-
+        binding.tvLevelNumber.text = "${QuestionList.getQuestion()[currentIndeks].id + levelIndex * QuestionList.getQuestion().size}"
 
         binding.img1.setOnClickListener {
             imageId = 1
@@ -127,9 +129,9 @@ class MainActivity : AppCompatActivity() {
             optionList[index].text = c.toString()
         }
 
-        val levelIndex = currentIndeks+1
-        binding.tvLevelNumber.text = levelIndex.toString()
 
+        binding.tvCoins.text = coins.toString()
+        binding.tvLevelNumber.text = "${QuestionList.getQuestion()[currentIndeks].id + levelIndex * QuestionList.getQuestion().size}"
 
     }
 
@@ -255,7 +257,6 @@ class MainActivity : AppCompatActivity() {
 
 
             }else{
-                Log.d("Vibrate","Vibrate")
                 vibratePhone(200)
             }
 
@@ -283,11 +284,19 @@ class MainActivity : AppCompatActivity() {
             currentIndeks++
         }else{
             currentIndeks = 0
+            levelIndex++
         }
+
+        coins+=4
 
         answerList.forEach {
             it.isClickable = true
         }
+
+        val editor = preferences.edit()
+        editor.putInt("LevelIndex",levelIndex)
+        editor.putInt("Coins",coins).apply()
+        editor.putInt("currentIndex",currentIndeks).apply()
 
         userAnswerList.clear()
         setQuestion()
@@ -329,5 +338,13 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    override fun onResume() {
+        super.onResume()
+        preferences = getSharedPreferences(PREFERENCE_NAME,Context.MODE_PRIVATE)
 
+         currentIndeks = preferences.getInt("currentIndex",0)
+         coins = preferences.getInt("Coins",0)
+         levelIndex = preferences.getInt("LevelIndex",0)
+        setQuestion()
+    }
 }

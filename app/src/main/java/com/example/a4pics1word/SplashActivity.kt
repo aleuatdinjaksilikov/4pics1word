@@ -24,4 +24,9 @@ class SplashActivity : AppCompatActivity() {
 
 
     }
+
+    override fun onRestart() {
+        super.onRestart()
+        finish()
+    }
 }
